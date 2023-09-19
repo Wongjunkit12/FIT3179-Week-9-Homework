@@ -1,13 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
   "title": "Trade Balance of Countries in the World",
-
   "data": {
     "url": "js/world_countries.topojson",
     "format": {"type": "topojson", "feature": "countries"}
   },
-
   "transform": [
     {
       "lookup": "properties.NAME",
@@ -20,15 +17,13 @@
       }
     },
     {
-      "calculate": "datum.Export (US$ Thousand) - datum.Import (US$ Thousand)",
+      "calculate": "datum['Export (US$ Thousand)'] - datum['Import (US$ Thousand)']",
       "as": "BalanceOfTrade"
     }
   ],
-
   "projection": {
     "type": "equalEarth"
   },
-
   "layer": [
     {
       "data": {
@@ -37,7 +32,6 @@
       },
       "mark": {"type": "geoshape", "fill": "lightcyan"}
     },
-
     {
       "mark": "geoshape",
       "encoding": {
@@ -54,6 +48,5 @@
       }
     }
   ],
-
   "config": {}
 }
