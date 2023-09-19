@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": "Trade Balance of Countries in the World",
+
+  "data": {
+    "url": "world_countries.topojson",
+    "format": {"type": "topojson", "feature": "countries"}
+  },
+
+  "transform": [
+    {
+      "lookup": "properties.NAME",
+      "from": {
+        "data": {
+          "url": "data/Homework9_edited.csv"
+        },
+        "key": "Partner Name",
+        "fields": ["Export (US$ Thousand)", "Import (US$ Thousand)"]
+      }
+    },
+    {
+      "calculate": "datum.Export (US$ Thousand) - datum.Import (US$ Thousand)",
+      "as": "BalanceOfTrade"
+    }
+  ],
+
+  "projection": {
+    "type": "equalEarth"
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "world_oceans.topojson",
+        "format": {"type": "topojson", "feature": "oceans"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightcyan"}
+    },
+
+    {
+      "mark": "geoshape",
+      "encoding": {
+        "color": {
+          "field": "BalanceOfTrade",
+          "type": "quantitative",
+          "title": "Balance of Trade",
+          "scale": {"scheme": "blueorange"}
+        },
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "BalanceOfTrade", "type": "quantitative", "title": "Balance of Trade"}
+        ]
+      }
+    }
+  ],
+
+  "config": {}
+}
