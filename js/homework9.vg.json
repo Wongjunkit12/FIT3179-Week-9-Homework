@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Trade Balance of Countries in the World",
+  "title": "Value of Exported Goods in Billions of US Dollars in 2020",
   "width": 1200,
   "height": 720,
   "data": {
@@ -45,7 +45,7 @@
         "color": {
           "field": "Export (US$ Billion)",
           "type": "quantitative",
-          "title": "Goods Exported (US$ Billion)",
+          "title": "Value of Exported Goods (US$ Billion)",
           "scale": {
             "domain": [0, 5, 10, 50, 100, 250, 500, 1000, 3000],
             "range": ["ffffff", "#ffffcc", "#c7e9b4", "#729a91", "#41b6c4", "#1d91c0", "#225ea8", "#215ca4", "#0c2c84"]
