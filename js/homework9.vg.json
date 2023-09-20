@@ -32,7 +32,7 @@
     },
     {
       "data": {
-        "url": "data/graticules.topojson",
+        "url": "js/graticules.topojson",
         "format": {"type": "topojson", "feature": "graticules"}
       },
       "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
